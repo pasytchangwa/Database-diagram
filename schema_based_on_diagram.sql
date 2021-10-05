@@ -23,6 +23,10 @@ CREATE TABLE medical_histories(
   PRIMARY KEY(Id)
 );
 
+CREATE INDEX parent_id_asc ON medical_histories (
+  parent_id ASC
+)
+
 CREATE TABLE invoices (
   Id INT GENERATED ALWAYS AS IDENTITY,
   total_amount decimal,
@@ -32,6 +36,10 @@ CREATE TABLE invoices (
   FOREIGN KEY(medical_history_id) REFERENCES medical_histories(Id),
   PRIMARY KEY(Id)
 );
+
+CREATE INDEX medical_history_id_asc ON invoice (
+  medical_history_id ASC
+)
 
 CREATE TABLE invoice_items(
  Id INT GENERATED ALWAYS AS IDENTITY,
