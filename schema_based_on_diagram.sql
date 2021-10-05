@@ -70,3 +70,11 @@ CREATE TABLE prescription(
  FOREIGN KEY(medical_history_id) REFERENCES medical_histories(Id),
  PRIMARY KEY(Id)
 );
+
+CREATE INDEX treatment_id_asc ON prescription (
+  treatment_id ASC
+);
+
+CREATE INDEX medical_history_id_asc ON prescription (
+  medical_history_id ASC
+);
