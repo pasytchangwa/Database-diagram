@@ -31,4 +31,25 @@ CREATE TABLE invoices (
   medical_history_id INT,
   FOREIGN KEY(medical_history_id) REFERENCES medical_histories(Id),
   PRIMARY KEY(Id)
-)
+);
+
+CREATE TABLE invoice_items(
+ Id INT GENERATED ALWAYS AS IDENTITY,
+ unit_price decimal,
+ quantity INT,
+ total_price decimal,
+ invoice_id INT,
+ treatment_id INT,
+ FOREIGN KEY(invoice_id) REFERENCES invoices(Id),
+ FOREIGN KEY(treatment_id) REFERENCES treatments(Id),
+ PRIMARY KEY(Id)
+);
+
+CREATE TABLE prescription(
+ Id INT GENERATED ALWAYS AS IDENTITY,
+ treatment_id INT,
+ medical_history_id INT,
+ FOREIGN KEY(treatment_id) REFERENCES treatments(Id),
+ FOREIGN KEY(medical_history_id) REFERENCES medical_histories(Id),
+ PRIMARY KEY(Id)
+);
